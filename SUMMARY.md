@@ -1,5 +1,7 @@
 # Summary
 
- - [Basics](basics.md)
- - [Writing your first plugin](writing.md)
- - [Plugin Guidelines](guidelines.md)
+ - Plugins
+  - [TL;DR](contents/plugins/tldr.md)
+  - [Basics (for plugins)](contents/plugins/basics.md)
+  - [Writing your first plugin](contents/plugins/writing.md)
+  - [Guidelines](contents/plugins/guidelines.md)
