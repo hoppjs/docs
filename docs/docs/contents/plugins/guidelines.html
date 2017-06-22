@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TL;DR · GitBook</title>
+        <title>Guidelines · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="basics.html" />
     
+    <link rel="prev" href="writing.html" />
     
 
     </head>
@@ -114,7 +114,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="tldr.html">
+        <li class="chapter " data-level="1.2.1" data-path="tldr.html">
             
                 <a href="tldr.html">
             
@@ -153,7 +153,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="guidelines.html">
+        <li class="chapter active" data-level="1.2.4" data-path="guidelines.html">
             
                 <a href="guidelines.html">
             
@@ -201,7 +201,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TL;DR</a>
+        <a href="../.." >Guidelines</a>
     </h1>
 </div>
 
@@ -216,10 +216,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="tldr-for-building-plugins">TL;DR for building plugins</h2>
-<p>If you want a quick &amp; easy way to get started building hopp plugins, we
-recommend you start from the <a href="https://github.com/hoppjs/hopp-sample-plugin" target="_blank">hopp-sample-plugin</a>
-repo and the <a href="contents/plugins/guidelines.md">hopp Plugin Guidelines</a>.</p>
+                                <h1 id="hopp-plugin-guidelines">hopp Plugin Guidelines</h1>
+<p>We want to help ensure that the hopp plugin ecosystem is a
+quality ecosystem and maintains the values of hopp. In an
+attempt to accomplish this, we will be maintaining this set
+of guidelines to define what a quality plugin is. If you fail
+to meet these guidelines, we&apos;re afraid we cannot include your
+plugin in the official plugin registry. So please make sure
+you read this document before setting sail on your project.</p>
+<ol>
+<li><p><strong>An alternate plugin that solves the same goal must not
+exist.</strong> For instance, if a <code>hopp-eslint</code> plugin already exists,
+there is no reason to create another plugin and name it something
+like <code>hopp-better-eslint</code>. Instead, try to contribute to the
+existing plugin repository and if there is a serious problem
+(such as the original maintainer no longer providing maintainence)
+then please <a href="mailto:hopp@apps.alibhai.co" target="_blank">contact us</a> and we will
+try to help you out.</p>
+</li>
+<li><p><strong>All plugins must be compatible with node v4 but promote modern
+development.</strong> hopp provides legacy support for node v4 users - because
+we know there&apos;s a lot of you guys. However, we want to move forwards
+as much as possible towards the newer ECMAScript versions.</p>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -247,10 +267,10 @@ repo and the <a href="contents/plugins/guidelines.md">hopp Plugin Guidelines</a>
 
             
                 
-                
-                <a href="basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Basics (for plugins)">
-                    <i class="fa fa-angle-right"></i>
+                <a href="writing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Writing your first plugin">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -259,7 +279,7 @@ repo and the <a href="contents/plugins/guidelines.md">hopp Plugin Guidelines</a>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TL;DR","level":"1.2.1","depth":2,"next":{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},"previous":{"title":"Plugins","level":"1.2","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.2.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.2.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.2.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/plugins/tldr.md","mtime":"2017-06-22T18:46:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-22T19:11:59.228Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Guidelines","level":"1.2.4","depth":2,"previous":{"title":"Writing your first plugin","level":"1.2.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/plugins/guidelines.md","mtime":"2017-06-22T15:53:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-22T19:10:12.869Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
