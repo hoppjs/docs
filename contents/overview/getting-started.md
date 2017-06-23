@@ -39,6 +39,21 @@ exports.bundling =
 The name of the export is used as the name of your task. The default task is under
 'default' (`exports.default = ...`).
 
+## git + hopp.lock
+
+hopp generates a file called `hopp.lock` when it builds and it uses this file to store
+information about its builds (in order to optimize future builds).
+
+The rule of thumb for whether or not you should commit this file is simple:
+
+**If you are committing your output files (compiled sources) to git, you should commit
+the `hopp.lock` file.**
+
+This is because `hopp.lock` assumes that the built source is intact since the last build.
+Due to this, there's also another rule you should follow:
+
+**NEVER MODIFY THE BUILT FILES DIRECTLY.** Use hopp to do it.
+
 ## Modernizing hoppfiles
 
 If you want to write your hoppfiles using ES2015, you must install
