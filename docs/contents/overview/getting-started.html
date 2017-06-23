@@ -1,0 +1,418 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Getting Started · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="using-plugins.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Overview
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="using-plugins.html">
+            
+                <a href="using-plugins.html">
+            
+                    
+                    Using Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="extras.html">
+            
+                <a href="extras.html">
+            
+                    
+                    Extras
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Plugins
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../plugins/tldr.html">
+            
+                <a href="../plugins/tldr.html">
+            
+                    
+                    TL;DR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../plugins/basics.html">
+            
+                <a href="../plugins/basics.html">
+            
+                    
+                    Basics (for plugins)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../plugins/writing.html">
+            
+                <a href="../plugins/writing.html">
+            
+                    
+                    Writing your first plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../plugins/guidelines.html">
+            
+                <a href="../plugins/guidelines.html">
+            
+                    
+                    Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Getting Started</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="getting-started">Getting Started</h1>
+<p>To start using hopp, you have to <strong>install it globally</strong> first. To
+do this, simply run <code>npm i -g hopp</code>. Unlike some of the other build
+tools, hopp does not need to be installed into each project
+individually - it uses some hacks to get around that.</p>
+<p>Secondly, you must <strong>setup your build</strong>. hopp uses the convention
+over configuration style and therefore you write your code in a
+file called <code>hoppfile.js</code> (place in the root of your project).
+You can choose to write this file using ES2015 features or natively
+supported features, it&apos;s up to you. If you choose to write it in
+ES2015 (the way we do), please read the <a href="#modernizing-hoppfiles">Modernizing hoppfiles</a>.
+section.</p>
+<p>Your hoppfile must import the hopp task manager from the package
+<code>hopp</code> (see line #1 of the sample hoppfile below). This task manager
+allows you to setup your hopp tasks and preloads your plugins for you.
+It is a function that can be used to define the glob of your source files
+(see line #4) and then it chains to form the other methods. The task chain
+must end with the destination method to define the output for your compiled
+files. If your task uses bundling (i.e. concats the files into one), the path
+that you provide to <code>.dest()</code> will be treated as a file (see line #10). Otherwise,
+it will be treated as a folder (see line #5).</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hopp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;hopp&apos;</span>)
+
+exports.noBundling =
+  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
+    .dest(<span class="hljs-string">&apos;dist/js&apos;</span>)
+
+exports.bundling =
+  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
+    .someBundlingPlugin()
+    .dest(<span class="hljs-string">&apos;dist/js/bundle.js&apos;</span>)
+</code></pre>
+<p>The name of the export is used as the name of your task. The default task is under
+&apos;default&apos; (<code>exports.default = ...</code>).</p>
+<h2 id="modernizing-hoppfiles">Modernizing hoppfiles</h2>
+<p>If you want to write your hoppfiles using ES2015, you must install
+babel-register local to your project. We recommend using the <a href="https://npmjs.org/babel-preset-env" target="_blank">env</a> preset (see sample .babelrc below).
+You can add an extra things you&apos;d like to your babel config. Here&apos;s a
+basic one that uses the env preset:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;presets&quot;</span>: [
+    [<span class="hljs-string">&quot;env&quot;</span>, {
+      <span class="hljs-string">&quot;targets&quot;</span>: {
+        <span class="hljs-string">&quot;node&quot;</span>: <span class="hljs-string">&quot;current&quot;</span>
+      }
+    }]
+  ]
+}
+</code></pre>
+<p>To instruct hopp to conduct the transpiling during a build, you can
+tell hopp to preload the babel-register module before doing any of
+the building. You can do this using the <code>-r</code> or <code>--require</code> flag. This
+will trigger transpiling of your <code>hoppfile.js</code> so you can write in
+modern code (i.e. <code>hopp -r babel-register</code>).</p>
+<p>Here&apos;s a copy of the same hoppfile as above but written in ES2015:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> hopp <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;hopp&apos;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> noBundling =
+  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
+    .dest(<span class="hljs-string">&apos;dist/js&apos;</span>)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bundling =
+  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
+    .someBundlingPlugin()
+    .dest(<span class="hljs-string">&apos;dist/js/bundle.js&apos;</span>)
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="using-plugins.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Using Plugins">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2.1","depth":2,"next":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"previous":{"title":"Overview","level":"1.2","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},{"title":"Extras","level":"1.2.3","depth":2,"path":"contents/overview/extras.md","ref":"contents/overview/extras.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/getting-started.md","mtime":"2017-06-23T16:55:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T16:55:48.515Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
