@@ -23,5 +23,8 @@ you read this document before setting sail on your project.
  of hopp get released. However, we want to move forwards as much as possible
  towards the newer ECMAScript versions.
 
- 3. **All plugin names must start with `hopp-`.** This is the convention for
- hopp plugins and it is used by hopp to do its autoloading.
+ 3. **All plugin names must start with `hopp-plugin-`.** This is the convention
+ for hopp plugins and it is used by hopp to do its autoloading. If your plugin
+ just starts with `hopp-` and not `hopp-plugin-`, it will not be loaded. The extra
+ plugin bit is there in case anyone wishes to build utilities or hacks for hopp
+ and would like to release it as a non-plugin.
