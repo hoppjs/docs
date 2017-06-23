@@ -37,3 +37,16 @@ exports.default =
 **Note:** As you can see above, the `-` in the plugin name tell
 hopp which words are part of the plugin's name and it will convert
 them to camelcase for you to use.
+
+If you would like to pass any options to the plugin, simply add them
+as parameters to the function call. For instance:
+
+```javascript
+exports.default =
+  hopp('src/*.js')
+    .samplePlugin({
+      // options go here
+      beAwesome: true
+    })
+    .dest('dist')
+```
