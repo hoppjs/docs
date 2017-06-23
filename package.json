@@ -4,7 +4,7 @@
   "description": "This is a guide on building plugins for hopp. Before you can do this, it is important to understand what a build tool is and how hopp works. For that info, you can checkout [our website](http://hoppjs.com/).",
   "main": "docs/index.html",
   "scripts": {
-    "build": "gitbook build && rm -rf docs && mv _book docs",
+    "build": "rm -rf docs && gitbook build && mv _book docs",
     "postbuild": "echo 'docs.hoppjs.com' > docs/CNAME"
   },
   "repository": {

@@ -230,6 +230,24 @@ fast are hidden away in this documentation. We&apos;ve targeted this documentati
 at users who want to <strong>use hopp</strong>, hackers that want to <strong>learn about hopp</strong>, and
 developers who want to <strong>build for hopp</strong>.</p>
 <p>To navigate through the documentation, use the sidebar.</p>
+<h2 id="why-hopp">Why hopp?</h2>
+<ol>
+<li><strong>Ridiculously fast.</strong> It was the reason we originally built hopp.
+We realized how much time was being wasted waiting for builds to finish.
+We also realized that all build tools claim to be the fastest. So we first
+developed benchmarks to verify the performance of build tools under various
+conditions over at <a href="https://travis-ci.org/hoppjs/buildjs-benchmarks" target="_blank">buildjs-benchmarks</a>.
+We use these benchmarks to continuously test the performance of hopp as we
+add and remove features.</li>
+<li><strong>Super magical.</strong> This is an opinion-based issue but many developers
+shy away from automation and say it is too <em>magical</em>. hopp does things a bit
+differently. We try to waive magic wands and say abracadabra whenever possible.
+Like autoloading plugins &amp; managing bundling.</li>
+<li><strong>Built to scale.</strong> Though the performance issues of other build tools is
+a bit painful, it really affects the build process of really large projects.
+hopp was built to perform well not just for smaller projects but also for large
+projects that their tools to perform at scale.</li>
+</ol>
 <h2 id="license">License</h2>
 <p>Copyright &#xA9; 2017 10244872 Canada Inc.</p>
 <p>All code &amp; docs are licensed under the <a href="LICENSE.md">MIT</a> license.</p>
@@ -268,7 +286,7 @@ developers who want to <strong>build for hopp</strong>.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Plugins","level":"1.2","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.2.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.2.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.2.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-06-23T03:30:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T03:30:22.253Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Plugins","level":"1.2","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.2.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.2.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.2.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-06-23T05:45:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T05:45:34.188Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
