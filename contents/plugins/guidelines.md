@@ -22,3 +22,6 @@ you read this document before setting sail on your project.
  intend on always supporting the oldest maintained node as major versions
  of hopp get released. However, we want to move forwards as much as possible
  towards the newer ECMAScript versions.
+
+ 3. **All plugin names must start with `hopp-`.** This is the convention for
+ hopp plugins and it is used by hopp to do its autoloading.
