@@ -1,0 +1,23 @@
+{
+  "name": "hopp-plugin-handbook",
+  "version": "0.0.1",
+  "description": "This is a guide on building plugins for hopp. Before you can do this, it is important to understand what a build tool is and how hopp works. For that info, you can checkout [our website](http://hoppjs.com/).",
+  "main": "docs/index.html",
+  "scripts": {
+    "build": "gitbook build && rm -rf docs && mv _book docs",
+    "postbuild": "echo 'docs.hoppjs.com' > docs/CNAME"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoppjs/hopp-plugin-handbook.git"
+  },
+  "author": "10244872 Canada Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoppjs/hopp-plugin-handbook/issues"
+  },
+  "homepage": "https://github.com/hoppjs/hopp-plugin-handbook#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0"
+  }
+}

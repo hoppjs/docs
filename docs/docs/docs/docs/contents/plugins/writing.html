@@ -1,0 +1,377 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Writing your first plugin · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="guidelines.html" />
+    
+    
+    <link rel="prev" href="basics.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Plugins
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="tldr.html">
+            
+                <a href="tldr.html">
+            
+                    
+                    TL;DR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="basics.html">
+            
+                <a href="basics.html">
+            
+                    
+                    Basics (for plugins)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="writing.html">
+            
+                <a href="writing.html">
+            
+                    
+                    Writing your first plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="guidelines.html">
+            
+                <a href="guidelines.html">
+            
+                    
+                    Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Writing your first plugin</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="writing-your-first-plugin">Writing your first plugin</h1>
+<p>This section will help you start writing your plugin from scratch. However, we recommend
+that you clone the <a href="https://github.com/hoppjs/hopp-sample-plugin" target="_blank">hoppjs/hopp-sample-plugin</a>
+repository when you&apos;re working on your actual plugin. It contains the initial setup that you
+will need to write your plugin.</p>
+<p><strong>This section assumes that you have already read about hopp and know how it works.</strong></p>
+<h2 id="so-es5-es2015-es2050">So... ES5? ES2015? ES2050?</h2>
+<p>hopp maintains compatibility with node v4 but all the code should be written using the latest
+stable (stage 3 &amp; 4 features) ECMAScript features and transpiled using <a href="https://github.com/babel/babel-preset-env" target="_blank">babel-preset-env</a>.</p>
+<p>This means that you should be writing your code using ES2015 modules (import/export) and async
+functions (where applicable). If you would still like to write your plugin without any transpiling,
+this guide will also cover the manual ways to handle certain things (but not all).</p>
+<h2 id="where-the-magic-happens">Where the magic happens</h2>
+<p>The main magic of your plugin should be contained in an asynchronous function. This function will
+be a callback used to transform either chunks of files or entire files (more on this in a minute).
+This function must be your plugin&apos;s default export. If you are not using babel to transpile your
+plugin, you may set your function to <code>module.exports</code> but this will affect the config section later.</p>
+<p>Your function will receive two arguments, the conventional names for which are: <code>ctx</code> and <code>data</code>.</p>
+<ul>
+<li><code>ctx</code>: an object with information about your plugin and utilities. This object should be seen
+as an overarching config object. If you use this object to store any data, that data will be able
+to you during <strong>every</strong> call of your plugin.</li>
+<li><code>data</code>: an object containing the contents and metadata of the current file chunk. This object
+should be seen as a local or temporary storage because it will be destroyed once the chunk reaches
+the end of the pipeline. You can use this to modify how other plugins see this chunk but your
+plugin will never see this data again.</li>
+</ul>
+<p>Since the transformation function is asynchronous, it should return a promise which must be resolved
+and given the <em>data object</em>. <strong>DO NOT RETURN JUST THE MODIFIED CONTENTS.</strong> If you just return the
+modified contents, the pipeline will fail and yell at the user. Here&apos;s an example:</p>
+<p><strong>DON&apos;T</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ctx, data</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(data.body)
+}
+</code></pre>
+<p><strong>DO</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ctx, data</span>) </span>{
+  data.body = <span class="hljs-built_in">String</span>(data.body)
+  <span class="hljs-keyword">return</span> data
+}
+</code></pre>
+<p>The &apos;DO&apos; code from above is a good example of a plugin that just converts all incoming data into
+a string.</p>
+<h3 id="the-ctx-object">The <code>ctx</code> object</h3>
+<ul>
+<li><code>args</code>: an array of the arguments passed to your plugin. These come from the hoppfile and are
+different for each task that your plugin participates in. For instance, if your plugin is called
+in the hoppfile below, the value of <code>args</code> will be <code>[&apos;hello&apos;, true]</code>.</li>
+<li><code>cache</code>: an empty object that is part of the persistent cache for your plugin. If you want to
+cache any data so that it is available for future builds, place it in this object.</li>
+<li><code>log</code>: a logging function that mimics <code>console.log()</code>. It prepends your logs with hopp-style
+logs that describe what task your plugin is part of and the name of your plugin.</li>
+<li><code>debug</code>: a logging function that mimics <code>console.log()</code>. The output for this is only shown when
+hopp is run with the verbose flag enabled.</li>
+<li><code>error</code>: a logging function that mimics <code>console.error()</code>. This will print output to stderr but
+will not cause hopp to fail. For hopp to stop the build, you must reject the promise or throw an
+error.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> hopp <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;hopp&apos;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>
+  hopp([ <span class="hljs-string">&apos;src/*.js&apos;</span> ])
+    .plugin(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-literal">true</span>)
+    .dest(<span class="hljs-string">&apos;dist&apos;</span>)
+</code></pre>
+<h3 id="the-data-object">The <code>data</code> object</h3>
+<ul>
+<li><code>file</code> (string): the absolute path to the file this chunk is part of. To get the dirname or basename,
+please use the <code>path</code> module.</li>
+<li><code>dest</code> (string): the absolute path to the output file for this chunk. Changing this will not rename
+the destination, just break the pipeline.</li>
+<li><code>size</code> (number): the size of the file before it was read off the disk.</li>
+<li><code>done</code> (boolean): true if this data chunk is the last chunk in this file, false otherwise.</li>
+<li><code>body</code> (buffer/string): a buffer read from the file. This may come to your plugin as a string if a
+plugin before your plugin has chosen to convert it. We recommend manually coercing it into a string
+(using <code>.toString(&apos;utf8&apos;)</code>) if you would like to use it as a string.</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="basics.html" class="navigation navigation-prev " aria-label="Previous page: Basics (for plugins)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="guidelines.html" class="navigation navigation-next " aria-label="Next page: Guidelines">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Writing your first plugin","level":"1.2.3","depth":2,"next":{"title":"Guidelines","level":"1.2.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]},"previous":{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/plugins/writing.md","mtime":"2017-06-23T03:21:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T03:23:02.382Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
