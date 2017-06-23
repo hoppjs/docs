@@ -28,7 +28,7 @@ To navigate through the documentation, use the sidebar.
  add and remove features.
  2. **Super magical.** This is an opinion-based issue but many developers
  shy away from automation and say it is too *magical*. hopp does things a bit
- differently. We try to waive magic wands and say abracadabra whenever possible.
+ differently. We try to wave magic wands and say abracadabra whenever possible.
  Like autoloading plugins & managing bundling.
  3. **Built to scale.** Though the performance issues of other build tools is
  a bit painful, it really affects the build process of really large projects.
