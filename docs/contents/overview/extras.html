@@ -274,7 +274,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="extras">Extras</h1>
+<p>This section contains all the misc extra things about doing things
+with hopp that don&apos;t fit elsewhere. Like our FAQ.</p>
+<h2 id="remote-destinations">Remote destinations</h2>
+<p>Currently, hopp does not support remote destinations out of the box.
+We recommend that in order to use remote destinations, you take advantage
+of one of the implementations of virtual filesystems such as sshfs, ftpfs,
+and pretty much any other binding built on FUSE.</p>
+<p>We feel that this is a very effective way to handle the collaboration
+between hopp and remote destinations since it still allows hopp to stat the
+remote files just as it would stat any local files and therefore allows our
+caching algorithms to work effectively without handling all the edge cases
+that come with remote destinations.</p>
+<p>If you are a user that does not like this approach or can think of a 90%
+use case that could benefit from builtin support for remote destinations
+in hopp, please add your thoughts to the <a href="https://github.com/hoppjs/hopp/issues/9" target="_blank">official remote destinations issue
+on Github</a>.</p>
+
                                 
                                 </section>
                             
@@ -313,7 +330,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Extras","level":"1.2.3","depth":2,"next":{"title":"Plugins","level":"1.3","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.3.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.3.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.3.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.3.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"previous":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/extras.md","mtime":"2017-06-23T15:46:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T18:15:08.955Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Extras","level":"1.2.3","depth":2,"next":{"title":"Plugins","level":"1.3","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.3.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.3.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.3.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.3.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"previous":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/extras.md","mtime":"2017-06-23T18:22:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-23T18:23:07.987Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
