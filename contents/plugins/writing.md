@@ -62,6 +62,8 @@ a string.
  - `args`: an array of the arguments passed to your plugin. These come from the hoppfile and are
  different for each task that your plugin participates in. For instance, if your plugin is called
  in the hoppfile below, the value of `args` will be `['hello', true]`.
+ - `cache`: an empty object that is part of the persistent cache for your plugin. If you want to
+ cache any data so that it is available for future builds, place it in this object.
  - `log`: a logging function that mimics `console.log()`. It prepends your logs with hopp-style
  logs that describe what task your plugin is part of and the name of your plugin.
  - `debug`: a logging function that mimics `console.log()`. The output for this is only shown when
