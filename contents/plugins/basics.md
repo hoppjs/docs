@@ -25,7 +25,7 @@ leaving the stream**.
 
 Visually, this looks something like this:
 
-![](img/plugin-stream.png)
+![](../../img/plugin-stream.png)
 
 The other way to look at your job is that you are building a bridge
 in between hopp and a transformation tool. Due to this, try and keep your
