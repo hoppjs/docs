@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="basics.html" />
+    
     
 
     </head>
@@ -98,26 +100,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" >
+        <li class="chapter " data-level="1.2" data-path="basics.html">
             
-                <span>
-            
-                    
-                    Plugins
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="contents/plugins/tldr.html">
-            
-                <a href="contents/plugins/tldr.html">
+                <a href="basics.html">
             
                     
-                    TL;DR
+                    Basics
             
                 </a>
             
@@ -125,22 +113,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="contents/plugins/basics.html">
+        <li class="chapter " data-level="1.3" data-path="writing.html">
             
-                <a href="contents/plugins/basics.html">
-            
-                    
-                    Basics (for plugins)
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="contents/plugins/writing.html">
-            
-                <a href="contents/plugins/writing.html">
+                <a href="writing.html">
             
                     
                     Writing your first plugin
@@ -151,21 +126,16 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="contents/plugins/guidelines.html">
+        <li class="chapter " data-level="1.4" data-path="guidelines.html">
             
-                <a href="contents/plugins/guidelines.html">
+                <a href="guidelines.html">
             
                     
-                    Guidelines
+                    Plugin Guidelines
             
                 </a>
             
 
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -218,7 +188,10 @@
 <p>This is a guide on building plugins for hopp. Before you can do this,
 it is important to understand what a build tool is and how hopp works.
 For that info, you can checkout <a href="http://hoppjs.com/" target="_blank">our website</a>.</p>
-<p>All the code and docs are licensed under the <a href="LICENSE.md">MIT</a> license.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>If you want a quick &amp; easy way to get started building hopp plugins, we
+recommend you start from the <a href="https://github.com/hoppjs/hopp-sample-plugin" target="_blank">hopp-sample-plugin</a>
+repo and the <a href="guidelines.html">hopp Plugin Guidelines</a>.</p>
 
                                 
                                 </section>
@@ -247,6 +220,10 @@ For that info, you can checkout <a href="http://hoppjs.com/" target="_blank">our
             
                 
                 
+                <a href="basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Basics">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -254,7 +231,7 @@ For that info, you can checkout <a href="http://hoppjs.com/" target="_blank">our
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Plugins","level":"1.2","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.2.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.2.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.2.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Guidelines","level":"1.2.4","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-06-22T18:46:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-22T19:10:12.869Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Basics","level":"1.2","depth":1,"path":"basics.md","ref":"basics.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-06-22T15:45:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-22T18:23:44.369Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

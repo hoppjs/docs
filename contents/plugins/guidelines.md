@@ -18,6 +18,7 @@ you read this document before setting sail on your project.
  try to help you out.
 
  2. **All plugins must be compatible with node v4 but promote modern
- development.** hopp provides legacy support for node v4 users - because
- we know there's a lot of you guys. However, we want to move forwards
- as much as possible towards the newer ECMAScript versions.
+ development.** hopp provides legacy support for node v4 users - and we
+ intend on always supporting the oldest maintained node as major versions
+ of hopp get released. However, we want to move forwards as much as possible
+ towards the newer ECMAScript versions.
