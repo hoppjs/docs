@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Extras · GitBook</title>
+        <title>The CLI · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="extras.html" />
     
-    <link rel="prev" href="cli.html" />
+    
+    <link rel="prev" href="dest.html" />
     
 
     </head>
@@ -153,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="cli.html">
+        <li class="chapter active" data-level="1.2.4" data-path="cli.html">
             
                 <a href="cli.html">
             
@@ -166,7 +168,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.5" data-path="extras.html">
+        <li class="chapter " data-level="1.2.5" data-path="extras.html">
             
                 <a href="extras.html">
             
@@ -311,7 +313,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Extras</a>
+        <a href="../.." >The CLI</a>
     </h1>
 </div>
 
@@ -326,23 +328,55 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="extras">Extras</h1>
-<p>This section contains all the misc extra things about doing things
-with hopp that don&apos;t fit elsewhere. Like our FAQ.</p>
-<h2 id="remote-destinations">Remote destinations</h2>
-<p>Currently, hopp does not support remote destinations out of the box.
-We recommend that in order to use remote destinations, you take advantage
-of one of the implementations of virtual filesystems such as sshfs, ftpfs,
-and pretty much any other binding built on FUSE.</p>
-<p>We feel that this is a very effective way to handle the collaboration
-between hopp and remote destinations since it still allows hopp to stat the
-remote files just as it would stat any local files and therefore allows our
-caching algorithms to work effectively without handling all the edge cases
-that come with remote destinations.</p>
-<p>If you are a user that does not like this approach or can think of a 90%
-use case that could benefit from builtin support for remote destinations
-in hopp, please add your thoughts to the <a href="https://github.com/hoppjs/hopp/issues/9" target="_blank">official remote destinations issue
-on Github</a>.</p>
+                                <h1 id="the-cli">The CLI</h1>
+<p>This is the documentation to help you out with using the
+hopp CLI tool.</p>
+<p>The hopp tool&apos;s help message looks something like this:</p>
+<pre><code>usage: hopp [OPTIONS] [TASKS]
+
+  -d, --directory  set path to project directory
+  -r, --require    require a module before doing anything
+  -R, --recache    force cache busting
+  -j, --jobs       set number of jobs to use for parallel tasks
+  -v, --verbose    enable debug messages
+  -V, --version    get version info
+  -h, --help       display this message
+</code></pre><h2 id="d---directory"><code>-d, --directory</code></h2>
+<p>This sets the path to the project directory. All files are considered
+to be relative to this location and the location must contain the 
+hoppfile.js, hopp.lock, input &amp; output folders. Really just everything.
+It&apos;s basically a shortcut for <code>cd $dir &amp;&amp; hopp &amp;&amp; cd ..</code>.</p>
+<h2 id="r---require"><code>-r, --require</code></h2>
+<p>This flag is similar to node&apos;s own <code>--require</code> flag. It allows you to
+instruct hopp to preload some module before doing anything else. This is
+useful for loading any register hooks such as <code>babel-register</code> or
+<code>coffee-script/register</code> (if you are using ES2015 features or writing in
+coffee-script).</p>
+<h2 id="r---recache"><code>-R, --recache</code></h2>
+<p>If you are ever in a situation where your cache is stale or hopp is
+refusing to work with an outdated cache, you can use this option to completely
+overwrite the cache with a brand new cache. This works by ignoring the
+cache on boot and then generating a fresh cache during the build.</p>
+<p>This can also be achieved by deleting the <code>hopp.lock</code> file and then
+running hopp.</p>
+<h2 id="j---jobs"><code>-j, --jobs</code></h2>
+<p>You might be familiar with the <code>-j</code> flag in the tool <code>make</code>. This flag
+was modelled after that idea. It will distribute the task execution amongst
+the number of threads that you specify. This number should always be a positive
+number.</p>
+<p>If you specify <code>-j 0</code> or <code>--jobs 0</code>, hopp will assume that you meant to use the
+number of cores as the number of jobs.</p>
+<h2 id="v---verbose"><code>-v, --verbose</code></h2>
+<p>Pretty standard flag. It will enable all of hopp&apos;s inner debug logging to show up
+in the console. If you&apos;ve got a TTY that supports pretty colors, the debug logs will
+be dimmed so that they don&apos;t distract from the main logs and errors.</p>
+<p>All of the verbose output is written to a <code>hopp-debug.log</code> file if hopp runs into any
+failures. If you run into a genuine failure (not caused by your code), please open a
+new issue on <a href="https://github.com/hoppjs/hopp" target="_blank">our Github</a> and upload that file.</p>
+<h2 id="v---version"><code>-V, --version</code></h2>
+<p>Outputs the version number from the <code>package.json</code>.</p>
+<h2 id="h---help"><code>-h, --help</code></h2>
+<p>Prints the above message.</p>
 
                                 
                                 </section>
@@ -370,10 +404,14 @@ on Github</a>.</p>
 
             
                 
-                <a href="cli.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: The CLI">
+                <a href="dest.html" class="navigation navigation-prev " aria-label="Previous page: Destinations">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="extras.html" class="navigation navigation-next " aria-label="Next page: Extras">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -382,7 +420,7 @@ on Github</a>.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Extras","level":"1.2.5","depth":2,"next":{"title":"Plugins","level":"1.3","depth":1,"ref":"","articles":[{"title":"TL;DR","level":"1.3.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},{"title":"Basics (for plugins)","level":"1.3.2","depth":2,"path":"contents/plugins/basics.md","ref":"contents/plugins/basics.md","articles":[]},{"title":"Writing your first plugin","level":"1.3.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},{"title":"Plugin configuration","level":"1.3.4","depth":2,"path":"contents/plugins/config.md","ref":"contents/plugins/config.md","articles":[]},{"title":"Handling bundling","level":"1.3.5","depth":2,"path":"contents/plugins/bundling.md","ref":"contents/plugins/bundling.md","articles":[]},{"title":"Guidelines","level":"1.3.6","depth":2,"path":"contents/plugins/guidelines.md","ref":"contents/plugins/guidelines.md","articles":[]}]},"previous":{"title":"The CLI","level":"1.2.4","depth":2,"path":"contents/overview/cli.md","ref":"contents/overview/cli.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/extras.md","mtime":"2017-06-23T18:22:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:27:51.905Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The CLI","level":"1.2.4","depth":2,"next":{"title":"Extras","level":"1.2.5","depth":2,"path":"contents/overview/extras.md","ref":"contents/overview/extras.md","articles":[]},"previous":{"title":"Destinations","level":"1.2.3","depth":2,"path":"contents/overview/dest.md","ref":"contents/overview/dest.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/cli.md","mtime":"2017-06-24T07:27:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:27:51.905Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

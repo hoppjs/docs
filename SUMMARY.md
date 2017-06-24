@@ -4,6 +4,7 @@
   - [Getting Started](contents/overview/getting-started.md)
   - [Using Plugins](contents/overview/using-plugins.md)
   - [Destinations](contents/overview/dest.md)
+  - [The CLI](contents/overview/cli.md)
   - [Extras](contents/overview/extras.md)
  - Plugins
   - [TL;DR](contents/plugins/tldr.md)
