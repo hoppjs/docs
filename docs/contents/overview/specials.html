@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>More on tasks · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="using-plugins.html" />
+    <link rel="next" href="dest.html" />
     
+    
+    <link rel="prev" href="using-plugins.html" />
     
 
     </head>
@@ -114,7 +116,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="getting-started.html">
+        <li class="chapter " data-level="1.2.1" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -140,7 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="specials.html">
+        <li class="chapter active" data-level="1.2.3" data-path="specials.html">
             
                 <a href="specials.html">
             
@@ -324,7 +326,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Getting Started</a>
+        <a href="../.." >More on tasks</a>
     </h1>
 </div>
 
@@ -339,80 +341,57 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="getting-started">Getting Started</h1>
-<p>To start using hopp, you have to <strong>install it globally</strong> first. To
-do this, simply run <code>npm i -g hopp</code>. Unlike some of the other build
-tools, hopp does not need to be installed into each project
-individually - it uses some hacks to get around that.</p>
-<p>Secondly, you must <strong>setup your build</strong>. hopp uses the convention
-over configuration style and therefore you write your code in a
-file called <code>hoppfile.js</code> (place in the root of your project).
-You can choose to write this file using ES2015 features or natively
-supported features, it&apos;s up to you. If you choose to write it in
-ES2015 (the way we do), please read the <a href="#modernizing-hoppfiles">Modernizing hoppfiles</a>.
-section.</p>
-<p>Your hoppfile must import the hopp task manager from the package
-<code>hopp</code> (see line #1 of the sample hoppfile below). This task manager
-allows you to setup your hopp tasks and preloads your plugins for you.
-It is a function that can be used to define the glob of your source files
-(see line #4) and then it chains to form the other methods. The task chain
-must end with the destination method to define the output for your compiled
-files. If your task uses bundling (i.e. concats the files into one), the path
-that you provide to <code>.dest()</code> will be treated as a file (see line #10). Otherwise,
-it will be treated as a folder (see line #5).</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hopp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;hopp&apos;</span>)
+                                <h1 id="more-on-tasks">More on tasks</h1>
+<p>There&apos;s a few different types of tasks and different
+ways to define them. Here they are.</p>
+<h2 id="parallel-tasks">Parallel tasks</h2>
+<p>There are two types of parallel tasks in hopp:</p>
+<ol>
+<li>The default type is asynchronous tasks. This is similar to
+fly&apos;s coroutines. It will simply spin off the different tasks
+in their own promises and wait for all of them to resolve.</li>
+<li>Truly concurrent tasks. These are actually run on separate
+node clusters (i.e. separate node processes). These must be
+manually enabled via the CLI and cannot be put into the build
+file (use it properly, it will slow down smaller builds, it&apos;s
+made for larger builds).</li>
+</ol>
+<p>To define a parallel task, use the <code>hopp.parallel</code> method in your
+build file and pass an array of task names that must be run in
+parallel.</p>
+<p>Sample hoppfile.js:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// more code is needed, it&apos;s been omitted</span>
 
-exports.noBundling =
-  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
-    .dest(<span class="hljs-string">&apos;dist/js&apos;</span>)
-
-exports.bundling =
-  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
-    .someBundlingPlugin()
-    .dest(<span class="hljs-string">&apos;dist/js/bundle.js&apos;</span>)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> hopp.parallel([
+  <span class="hljs-string">&apos;js&apos;</span>,
+  <span class="hljs-string">&apos;css&apos;</span>
+])
 </code></pre>
-<p>The name of the export is used as the name of your task. The default task is under
-&apos;default&apos; (<code>exports.default = ...</code>).</p>
-<h2 id="git--hopplock">git + hopp.lock</h2>
-<p>hopp generates a file called <code>hopp.lock</code> when it builds and it uses this file to store
-information about its builds (in order to optimize future builds).</p>
-<p>The rule of thumb for whether or not you should commit this file is simple:</p>
-<p><strong>If you are committing your output files (compiled sources) to git, you should commit
-the <code>hopp.lock</code> file.</strong></p>
-<p>This is because <code>hopp.lock</code> assumes that the built source is intact since the last build.
-Due to this, there&apos;s also another rule you should follow:</p>
-<p><strong>NEVER MODIFY THE BUILT FILES DIRECTLY.</strong> Use hopp to do it.</p>
-<h2 id="modernizing-hoppfiles">Modernizing hoppfiles</h2>
-<p>If you want to write your hoppfiles using ES2015, you must install
-babel-register local to your project. We recommend using the <a href="https://npmjs.org/babel-preset-env" target="_blank">env</a> preset (see sample .babelrc below).
-You can add an extra things you&apos;d like to your babel config. Here&apos;s a
-basic one that uses the env preset:</p>
-<pre><code class="lang-json">{
-  <span class="hljs-string">&quot;presets&quot;</span>: [
-    [<span class="hljs-string">&quot;env&quot;</span>, {
-      <span class="hljs-string">&quot;targets&quot;</span>: {
-        <span class="hljs-string">&quot;node&quot;</span>: <span class="hljs-string">&quot;current&quot;</span>
-      }
-    }]
-  ]
-}
+<h2 id="stepped-tasks">Stepped tasks</h2>
+<p>These tasks are very similar to parallel tasks except they
+are ordered and therefore one must end before another begins.</p>
+<p>Instead of using the <code>.parallel()</code> method, you should use the
+<code>.steps</code> method:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// more code is needed, it&apos;s been omitted</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> hopp.steps([
+  <span class="hljs-string">&apos;js&apos;</span>,
+  <span class="hljs-string">&apos;css&apos;</span>
+])
 </code></pre>
-<p>To instruct hopp to conduct the transpiling during a build, you can
-tell hopp to preload the babel-register module before doing any of
-the building. You can do this using the <code>-r</code> or <code>--require</code> flag. This
-will trigger transpiling of your <code>hoppfile.js</code> so you can write in
-modern code (i.e. <code>hopp -r babel-register</code>).</p>
-<p>Here&apos;s a copy of the same hoppfile as above but written in ES2015:</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> hopp <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;hopp&apos;</span>
+<h2 id="watch-tasks">Watch tasks</h2>
+<p>hopp does not support a watch mode in the way that you would
+expect (sorry). Instead of watching a glob of files and then
+triggering a task when those files change, in hopp, you would
+watch a task. The task is responsible for defining the proper
+globs that need to be watched.</p>
+<p>The API is the same as that for parallel and steps:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// more code is needed, it&apos;s been omitted</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> noBundling =
-  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
-    .dest(<span class="hljs-string">&apos;dist/js&apos;</span>)
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bundling =
-  hopp([ <span class="hljs-string">&apos;src/js/**/**.js&apos;</span> ])
-    .someBundlingPlugin()
-    .dest(<span class="hljs-string">&apos;dist/js/bundle.js&apos;</span>)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> hopp.watch([
+  <span class="hljs-string">&apos;js&apos;</span>,
+  <span class="hljs-string">&apos;css&apos;</span>
+])
 </code></pre>
 
                                 
@@ -441,8 +420,12 @@ modern code (i.e. <code>hopp -r babel-register</code>).</p>
 
             
                 
+                <a href="using-plugins.html" class="navigation navigation-prev " aria-label="Previous page: Using Plugins">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="using-plugins.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Using Plugins">
+                
+                <a href="dest.html" class="navigation navigation-next " aria-label="Next page: Destinations">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -453,7 +436,7 @@ modern code (i.e. <code>hopp -r babel-register</code>).</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2.1","depth":2,"next":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"previous":{"title":"Overview","level":"1.2","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},{"title":"More on tasks","level":"1.2.3","depth":2,"path":"contents/overview/specials.md","ref":"contents/overview/specials.md","articles":[]},{"title":"Destinations","level":"1.2.4","depth":2,"path":"contents/overview/dest.md","ref":"contents/overview/dest.md","articles":[]},{"title":"The CLI","level":"1.2.5","depth":2,"path":"contents/overview/cli.md","ref":"contents/overview/cli.md","articles":[]},{"title":"Extras","level":"1.2.6","depth":2,"path":"contents/overview/extras.md","ref":"contents/overview/extras.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/getting-started.md","mtime":"2017-06-23T18:00:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:35:58.663Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"More on tasks","level":"1.2.3","depth":2,"next":{"title":"Destinations","level":"1.2.4","depth":2,"path":"contents/overview/dest.md","ref":"contents/overview/dest.md","articles":[]},"previous":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/specials.md","mtime":"2017-06-24T07:35:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:35:58.663Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

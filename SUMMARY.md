@@ -3,6 +3,7 @@
  - Overview
   - [Getting Started](contents/overview/getting-started.md)
   - [Using Plugins](contents/overview/using-plugins.md)
+  - [More on tasks](contents/overview/specials.md)
   - [Destinations](contents/overview/dest.md)
   - [The CLI](contents/overview/cli.md)
   - [Extras](contents/overview/extras.md)
