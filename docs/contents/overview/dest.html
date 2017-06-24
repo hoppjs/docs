@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Basics (for plugins) · GitBook</title>
+        <title>Destinations · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="writing.html" />
+    <link rel="next" href="extras.html" />
     
     
-    <link rel="prev" href="tldr.html" />
+    <link rel="prev" href="using-plugins.html" />
     
 
     </head>
@@ -116,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../overview/getting-started.html">
+        <li class="chapter " data-level="1.2.1" data-path="getting-started.html">
             
-                <a href="../overview/getting-started.html">
+                <a href="getting-started.html">
             
                     
                     Getting Started
@@ -129,9 +129,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../overview/using-plugins.html">
+        <li class="chapter " data-level="1.2.2" data-path="using-plugins.html">
             
-                <a href="../overview/using-plugins.html">
+                <a href="using-plugins.html">
             
                     
                     Using Plugins
@@ -142,9 +142,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../overview/dest.html">
+        <li class="chapter active" data-level="1.2.3" data-path="dest.html">
             
-                <a href="../overview/dest.html">
+                <a href="dest.html">
             
                     
                     Destinations
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../overview/extras.html">
+        <li class="chapter " data-level="1.2.4" data-path="extras.html">
             
-                <a href="../overview/extras.html">
+                <a href="extras.html">
             
                     
                     Extras
@@ -187,9 +187,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="tldr.html">
+        <li class="chapter " data-level="1.3.1" data-path="../plugins/tldr.html">
             
-                <a href="tldr.html">
+                <a href="../plugins/tldr.html">
             
                     
                     TL;DR
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="basics.html">
+        <li class="chapter " data-level="1.3.2" data-path="../plugins/basics.html">
             
-                <a href="basics.html">
+                <a href="../plugins/basics.html">
             
                     
                     Basics (for plugins)
@@ -213,9 +213,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="writing.html">
+        <li class="chapter " data-level="1.3.3" data-path="../plugins/writing.html">
             
-                <a href="writing.html">
+                <a href="../plugins/writing.html">
             
                     
                     Writing your first plugin
@@ -226,9 +226,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="config.html">
+        <li class="chapter " data-level="1.3.4" data-path="../plugins/config.html">
             
-                <a href="config.html">
+                <a href="../plugins/config.html">
             
                     
                     Plugin configuration
@@ -239,9 +239,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="bundling.html">
+        <li class="chapter " data-level="1.3.5" data-path="../plugins/bundling.html">
             
-                <a href="bundling.html">
+                <a href="../plugins/bundling.html">
             
                     
                     Handling bundling
@@ -252,9 +252,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="guidelines.html">
+        <li class="chapter " data-level="1.3.6" data-path="../plugins/guidelines.html">
             
-                <a href="guidelines.html">
+                <a href="../plugins/guidelines.html">
             
                     
                     Guidelines
@@ -300,7 +300,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Basics (for plugins)</a>
+        <a href="../.." >Destinations</a>
     </h1>
 </div>
 
@@ -315,35 +315,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="basics">Basics</h1>
-<p>hopp is a build tool, we know that by now. It works a bit differently
-than other build tools and it is some of these differences that affect
-the architecture and development of hopp plugins.</p>
-<p>As a plugin maker, <strong>your purpose is to write some code that can transform
-some other code</strong>. This transformation process can be whatever you want.
-In the case of static analysis tools, it could be sometihng like linting
-code to check for bugs. This would be the conversion of some code that
-needs to be linted into console output that describes the issues. If you
-build a plugin for a preprocessor (such as less or sass), your job is to
-compile the code from its source to a usable output (such as css).</p>
-<p>Regardless of how you do it, your primary job is to transform. hopp
-tries to make this job as easy as possible by stripping away much of
-the complication. <strong>Plugins expose asynchronous functions (i.e. or a
-synchronous function that returns a Promise).</strong> In the background, hopp
-wraps your function inside of a transformation stream to take advantage
-of node&apos;s streaming capabilities when handling files. What this means
-for you is that your plugin code will be part of a larger stream which
-is transforming code. The <strong>input to your plugin will be the data entering
-the stream</strong> and consequently the <strong>output of your plugin will be the data
-leaving the stream</strong>.</p>
-<p>Visually, this looks something like this:</p>
-<p><img src="../../img/plugin-stream.png" alt=""></p>
-<p>The other way to look at your job is that you are building a bridge
-in between hopp and a transformation tool. Due to this, try and keep your
-plugin&apos;s API as simple and predictable as possible. If the tool that you
-are building a plugin for uses a certain pattern of doing things, keep to
-that pattern rather than designing your own (this is most relevant to when
-you decide how to take arguments and options as input).</p>
+                                <h1 id="destinations">Destinations</h1>
+<p>There are a few different ways to use the <code>.dest()</code> function
+in hopp to define the output of the task chain.</p>
+<ol>
+<li><code>.dest(directory)</code>: by default, hopp assumes that the
+destination provided is a directory that all source files must
+end up in after compilation.</li>
+<li><code>.dest(file)</code>: <strong>if you use any bundling plugins</strong> in your task
+chain, hopp will assume that the path given as the destination
+is not a directory but rather <strong>is a file</strong>.</li>
+<li><code>.dest()</code>: if no output destination is provided, hopp switches
+to in-place mode and the output will completely replace the original
+source files.</li>
+</ol>
 
                                 
                                 </section>
@@ -371,12 +356,12 @@ you decide how to take arguments and options as input).</p>
 
             
                 
-                <a href="tldr.html" class="navigation navigation-prev " aria-label="Previous page: TL;DR">
+                <a href="using-plugins.html" class="navigation navigation-prev " aria-label="Previous page: Using Plugins">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="writing.html" class="navigation navigation-next " aria-label="Next page: Writing your first plugin">
+                <a href="extras.html" class="navigation navigation-next " aria-label="Next page: Extras">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -387,7 +372,7 @@ you decide how to take arguments and options as input).</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Basics (for plugins)","level":"1.3.2","depth":2,"next":{"title":"Writing your first plugin","level":"1.3.3","depth":2,"path":"contents/plugins/writing.md","ref":"contents/plugins/writing.md","articles":[]},"previous":{"title":"TL;DR","level":"1.3.1","depth":2,"path":"contents/plugins/tldr.md","ref":"contents/plugins/tldr.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/plugins/basics.md","mtime":"2017-06-23T03:25:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:19:08.936Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Destinations","level":"1.2.3","depth":2,"next":{"title":"Extras","level":"1.2.4","depth":2,"path":"contents/overview/extras.md","ref":"contents/overview/extras.md","articles":[]},"previous":{"title":"Using Plugins","level":"1.2.2","depth":2,"path":"contents/overview/using-plugins.md","ref":"contents/overview/using-plugins.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/dest.md","mtime":"2017-06-24T07:18:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:19:08.936Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
