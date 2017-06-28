@@ -13,12 +13,12 @@ dependencies or developer dependencies, hopp will automatically
 load your plugins into the task manager.
 
 Let's look at an example. The following is a minimal package.json
-that would cause hopp to load the `hopp-sample-plugin` plugin.
+that would cause hopp to load the `hopp-plugin-sample` plugin.
 
 ```json
 {
   "devDependencies": {
-    "hopp-sample-plugin": "*"
+    "hopp-plugin-sample": "*"
   }
 }
 ```
@@ -30,11 +30,11 @@ For instance:
 ```javascript
 exports.default =
   hopp('src/*.js')
-    .samplePlugin()
+    .sample()
     .dest('dist')
 ```
 
-**Note:** As you can see above, the `-` in the plugin name tell
+**Note:** As you can see above, the `-` in the plugin name tells
 hopp which words are part of the plugin's name and it will convert
 them to camelcase for you to use.
 
@@ -44,7 +44,7 @@ as parameters to the function call. For instance:
 ```javascript
 exports.default =
   hopp('src/*.js')
-    .samplePlugin({
+    .sample({
       // options go here
       beAwesome: true
     })

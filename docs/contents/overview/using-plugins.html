@@ -352,10 +352,10 @@ to your <code>package.json</code>. Regardless of whether you save it in the
 dependencies or developer dependencies, hopp will automatically
 load your plugins into the task manager.</p>
 <p>Let&apos;s look at an example. The following is a minimal package.json
-that would cause hopp to load the <code>hopp-sample-plugin</code> plugin.</p>
+that would cause hopp to load the <code>hopp-plugin-sample</code> plugin.</p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;devDependencies&quot;</span>: {
-    <span class="hljs-string">&quot;hopp-sample-plugin&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
+    <span class="hljs-string">&quot;hopp-plugin-sample&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
   }
 }
 </code></pre>
@@ -364,17 +364,17 @@ any extra loading, just call it as a method of your task chain.
 For instance:</p>
 <pre><code class="lang-javascript">exports.default =
   hopp(<span class="hljs-string">&apos;src/*.js&apos;</span>)
-    .samplePlugin()
+    .sample()
     .dest(<span class="hljs-string">&apos;dist&apos;</span>)
 </code></pre>
-<p><strong>Note:</strong> As you can see above, the <code>-</code> in the plugin name tell
+<p><strong>Note:</strong> As you can see above, the <code>-</code> in the plugin name tells
 hopp which words are part of the plugin&apos;s name and it will convert
 them to camelcase for you to use.</p>
 <p>If you would like to pass any options to the plugin, simply add them
 as parameters to the function call. For instance:</p>
 <pre><code class="lang-javascript">exports.default =
   hopp(<span class="hljs-string">&apos;src/*.js&apos;</span>)
-    .samplePlugin({
+    .sample({
       <span class="hljs-comment">// options go here</span>
       beAwesome: <span class="hljs-literal">true</span>
     })
@@ -423,7 +423,7 @@ as parameters to the function call. For instance:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Using Plugins","level":"1.2.2","depth":2,"next":{"title":"More on tasks","level":"1.2.3","depth":2,"path":"contents/overview/specials.md","ref":"contents/overview/specials.md","articles":[]},"previous":{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/using-plugins.md","mtime":"2017-06-23T17:18:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-24T07:35:58.663Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Using Plugins","level":"1.2.2","depth":2,"next":{"title":"More on tasks","level":"1.2.3","depth":2,"path":"contents/overview/specials.md","ref":"contents/overview/specials.md","articles":[]},"previous":{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/using-plugins.md","mtime":"2017-06-28T20:25:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-28T20:26:13.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

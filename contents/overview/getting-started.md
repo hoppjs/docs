@@ -10,7 +10,7 @@ over configuration style and therefore you write your code in a
 file called `hoppfile.js` (place in the root of your project).
 You can choose to write this file using ES2015 features or natively
 supported features, it's up to you. If you choose to write it in
-ES2015 (the way we do), please read the [Modernizing hoppfiles](#modernizing-hoppfiles).
+ES2015 (the way we do), please read the [Modernizing hoppfiles](#modernizing-hoppfiles)
 section.
 
 Your hoppfile must import the hopp task manager from the package
@@ -57,9 +57,9 @@ Due to this, there's also another rule you should follow:
 ## Modernizing hoppfiles
 
 If you want to write your hoppfiles using ES2015, you must install
-babel-register local to your project. We recommend using the [env](https://npmjs.org/babel-preset-env) preset (see sample .babelrc below).
-You can add an extra things you'd like to your babel config. Here's a
-basic one that uses the env preset:
+babel-register local to your project. We recommend using the [env](https://npmjs.org/babel-preset-env) preset. You can add any extra presets
+or plugins you'd like to your babel config. Here's a basic one that uses the
+env preset:
 
 ```json
 {
