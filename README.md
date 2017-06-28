@@ -1,21 +1,24 @@
 <p align="center">
-  <img src="img/logo.png">
+  <a href="http://hoppjs.com/"><img src="img/logo.png"></a>
 </p>
 <p align="center">Crazy rapid build system.</p>
 
 <p align="center">
   <a href="https://travis-ci.org/hoppjs/hopp"><img alt="Travis CI" src="https://travis-ci.org/hoppjs/hopp.svg?branch=master"></a>
+  <a href="https://codecov.io/gh/hoppjs/hopp">
+    <img src="https://codecov.io/gh/hoppjs/hopp/branch/master/graph/badge.svg" alt="Codecov" />
+  </a>
   <img alt="node v4 to 8" src="https://img.shields.io/badge/node-v4%20to%208-brightgreen.svg?style=flat">
 </p>
 
-## Welcome to hopp
+> hopp is now under a public alpha. Please help us improve it by reporting issues!
 
-It's a crazy rapid build system. The concepts behind hopp that make it
-fast are hidden away in this documentation. We've targeted this documentation
-at users who want to **use hopp**, hackers that want to **learn about hopp**, and
-developers who want to **build for hopp**.
+[![NPM](https://nodei.co/npm/hopp.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/hopp/)
 
-To navigate through the documentation, use the sidebar.
+## Usage
+
+For all information regarding how to setup hopp, how to use plugins, & how to
+make plugins, checkout our official [docs](https://docs.hoppjs.com/).
 
 ## Why hopp?
 
@@ -23,7 +26,7 @@ To navigate through the documentation, use the sidebar.
  We realized how much time was being wasted waiting for builds to finish.
  We also realized that all build tools claim to be the fastest. So we first
  developed benchmarks to verify the performance of build tools under various
- conditions over at [buildjs-benchmarks](https://travis-ci.org/hoppjs/buildjs-benchmarks).
+ conditions over at **[buildjs-benchmarks](https://travis-ci.org/hoppjs/buildjs-benchmarks)**.
  We use these benchmarks to continuously test the performance of hopp as we
  add and remove features.
  2. **Super magical.** This is an opinion-based issue but many developers
@@ -35,8 +38,37 @@ To navigate through the documentation, use the sidebar.
  a real issue with larger projects. hopp was built to perform well not just for smaller
  projects but also for large projects that need their tools to perform at scale.
 
+## Example
+
+Sample `hoppfile.js`:
+
+```javascript
+import hopp from 'hopp'
+
+export const less =
+  hopp([ 'src/less/**/*.less' ])
+    .less()
+    .dest('dist/css')
+
+export const js =
+  hopp([ 'src/js/**/*.js' ])
+    .babel()
+    .concat()
+    .dest()
+
+export const watch = hopp.watch([
+  'less',
+  'css'
+])
+
+export default hopp.all([
+  'less',
+  'css'
+])
+```
+
 ## License
 
-Copyright &copy; 2017 10244872 Canada Inc.
+Copyright (C) 2017 10244872 Canada Inc.
 
-All code & docs are licensed under the [MIT](LICENSE.md) license.
+Licensed under [MIT](LICENSE.md) license.
