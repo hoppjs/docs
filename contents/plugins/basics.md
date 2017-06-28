@@ -14,7 +14,7 @@ compile the code from its source to a usable output (such as css).
 
 Regardless of how you do it, your primary job is to transform. hopp
 tries to make this job as easy as possible by stripping away much of
-the complication. **Plugins expose asynchronous functions (i.e. or a
+the complication. **Plugins expose asynchronous functions (or a
 synchronous function that returns a Promise).** In the background, hopp
 wraps your function inside of a transformation stream to take advantage
 of node's streaming capabilities when handling files. What this means
