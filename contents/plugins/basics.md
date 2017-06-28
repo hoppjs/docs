@@ -6,7 +6,7 @@ the architecture and development of hopp plugins.
 
 As a plugin maker, **your purpose is to write some code that can transform
 some other code**. This transformation process can be whatever you want.
-In the case of static analysis tools, it could be sometihng like linting
+In the case of static analysis tools, it could be something like linting
 code to check for bugs. This would be the conversion of some code that
 needs to be linted into console output that describes the issues. If you
 build a plugin for a preprocessor (such as less or sass), your job is to
