@@ -5,12 +5,19 @@ do this, simply run `npm i -g hopp`. Unlike some of the other build
 tools, hopp does not need to be installed into each project
 individually - it uses some hacks to get around that.
 
-Secondly, you must **setup your build**. hopp uses the convention
+> In the event that you would like to use different versions of hopp
+for different projects, you can choose to install it locally per project.
+If you're a fan of decreasing global dependencies and just making sure
+you have everything locally, you can use hopp that way too. Just ensure
+that you can calling the CLI properly (by either adjusting your PATH or
+through npm scripts).
+
+Secondly, you must **setup your build**. hopp uses the code
 over configuration style and therefore you write your code in a
 file called `hoppfile.js` (place in the root of your project).
 You can choose to write this file using ES2015 features or natively
 supported features, it's up to you. If you choose to write it in
-ES2015 (the way we do), please read the [Modernizing hoppfiles](#modernizing-hoppfiles)
+ES2015, please read the [Modernizing hoppfiles](#modernizing-hoppfiles)
 section.
 
 Your hoppfile must import the hopp task manager from the package
