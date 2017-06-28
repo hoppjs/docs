@@ -16,7 +16,7 @@ There are two types of parallel tasks in hopp:
   file (use it properly, it will slow down smaller builds, it's
   made for larger builds).
 
-To define a parallel task, use the `hopp.parallel` method in your
+To define a parallel task, use the `hopp.all` method in your
 build file and pass an array of task names that must be run in
 parallel.
 
@@ -25,7 +25,7 @@ Sample hoppfile.js:
 ```javascript
 // more code is needed, it's been omitted
 
-export default hopp.parallel([
+export default hopp.all([
   'js',
   'css'
 ])
@@ -36,7 +36,7 @@ export default hopp.parallel([
 These tasks are very similar to parallel tasks except they
 are ordered and therefore one must end before another begins.
 
-Instead of using the `.parallel()` method, you should use the
+Instead of using the `.all()` method, you should use the
 `.steps` method:
 
 ```javascript
