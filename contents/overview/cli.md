@@ -45,12 +45,28 @@ running hopp.
 ## `-j, --jobs`
 
 You might be familiar with the `-j` flag in the tool `make`. This flag
-was modelled after that idea. It will distribute the task execution amongst
-the number of threads that you specify. This number should always be a positive
+was modelled after that idea. It will distribute the parallel tasks amongst
+the number of processes that you specify. This number should always be a positive
 number.
 
 If you specify `-j 0` or `--jobs 0`, hopp will assume that you meant to use the
 number of cores as the number of jobs.
+
+**Notes:**
+
+ 1. This **only works on tasks specified using `hopp.all()`** - not on individual
+tasks. It's designed to speed up the execution of many tasks rather than optimize
+heavy task chains (we use other methods for that).
+ 2. **There is no guarantee that this will speed up your builds.** Clustering has a high
+ startup and shutdown cost and therefore if your tasks are relatively quick (as hopp
+ tries to make sure they are), the useless time spent on clustering will slow down your
+ build significantly.
+ 3. **More jobs != more performance.** Different situations require different number of
+ jobs to be optimal. For instance, in our main repo for hopp, we currently have 6 parallel
+ tasks in the build process. On my laptop that has a quad-core CPU, 4 jobs is actually a lot
+ slower than not using any parallelism. But 2 jobs is the fastest - and so that's what I use.
+ It's just a product of realizing at what point does the cost of parallelism drops below the
+ cost of too many tasks on one process.
 
 ## `-v, --verbose`
 
