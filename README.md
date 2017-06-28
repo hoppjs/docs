@@ -30,10 +30,10 @@ To navigate through the documentation, use the sidebar.
  shy away from automation and say it is too *magical*. hopp does things a bit
  differently. We try to wave magic wands and say abracadabra whenever possible.
  Like autoloading plugins & managing bundling.
- 3. **Built to scale.** Though the performance issues of other build tools is
- a bit painful, it can usually be tolerated. But it really affects the build process
- of really large projects. hopp was built to perform well not just for smaller projects
- but also for large projects that need their tools to perform at scale.
+ 3. **Built to scale.** Though the performance issues of other build tools can be
+ a bit painful, it can usually be tolerated. Build tool speed and performance becomes
+ a real issue with larger projects. hopp was built to perform well not just for smaller
+ projects but also for large projects that need their tools to perform at scale.
 
 ## License
 
