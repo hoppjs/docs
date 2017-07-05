@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://hoppjs.com/"><img src="img/logo.png"></a>
+  <a href="http://hoppjs.com/"><img src="https://github.com/hoppjs/hopp/raw/master/.github/logo.png"></a>
 </p>
 <p align="center">Crazy rapid build system.</p>
 
@@ -10,8 +10,6 @@
   </a>
   <img alt="node v4 to 8" src="https://img.shields.io/badge/node-v4%20to%208-brightgreen.svg?style=flat">
 </p>
-
-> hopp is now under a public alpha. Please help us improve it by reporting issues!
 
 [![NPM](https://nodei.co/npm/hopp.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/hopp/)
 
@@ -33,14 +31,16 @@ make plugins, checkout our official [docs](https://docs.hoppjs.com/).
  shy away from automation and say it is too *magical*. hopp does things a bit
  differently. We try to wave magic wands and say abracadabra whenever possible.
  Like autoloading plugins & managing bundling.
- 3. **Built to scale.** Though the performance issues of other build tools can be
- a bit painful, it can usually be tolerated. Build tool speed and performance becomes
- a real issue with larger projects. hopp was built to perform well not just for smaller
- projects but also for large projects that need their tools to perform at scale.
+ 3. **Built to scale.** Though the performance issues of other build tools is
+ a bit painful, it really affects the build process of really large projects.
+ hopp was built to perform well not just for smaller projects but also for large
+ projects that their tools to perform at scale.
 
 ## Example
 
 Sample `hoppfile.js`:
+
+*You will need to install the proper plugins & presets to use this file.*
 
 ```javascript
 import hopp from 'hopp'
@@ -66,6 +66,15 @@ export default hopp.all([
   'css'
 ])
 ```
+
+## Contributing
+
+We love contributors! After all, this is an open source project.
+
+To get started, checkout our [contribution guide](.github/CONTRIBUTING.md).
+
+**When reporting issues, please try to follow the provided template and
+upload a proper `hopp-debug.log` file to accompany your bug report.**
 
 ## License
 

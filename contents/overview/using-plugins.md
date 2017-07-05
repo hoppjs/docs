@@ -50,3 +50,28 @@ exports.default =
     })
     .dest('dist')
 ```
+
+## Local plugins
+
+> Supported in hopp >= 1.2.0.
+
+Sometimes, you may want to load plugins which are stored locally and
+aren't published npm packages (in case you have something project
+specific that needs to get done or you're trying to test a plugin
+you're developing). To tell hopp to load these plugins, you can
+call `hopp.load()` with the absolute path to plugin directory in your
+hoppfile.
+
+Here's an example that would be appropriate if you had a plugin called
+`sample` stored in `plugins/sample`:
+
+```javascript
+const hopp = require('hopp')
+
+hopp.load(`${__dirname}/plugins/sample`)
+
+export default
+  hopp([ 'src/**/*.js' ])
+    .sample()
+    .dest('dist')
+```

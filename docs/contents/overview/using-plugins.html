@@ -380,6 +380,27 @@ as parameters to the function call. For instance:</p>
     })
     .dest(<span class="hljs-string">&apos;dist&apos;</span>)
 </code></pre>
+<h2 id="local-plugins">Local plugins</h2>
+<blockquote>
+<p>Supported in hopp &gt;= 1.2.0.</p>
+</blockquote>
+<p>Sometimes, you may want to load plugins which are stored locally and
+aren&apos;t published npm packages (in case you have something project
+specific that needs to get done or you&apos;re trying to test a plugin
+you&apos;re developing). To tell hopp to load these plugins, you can
+call <code>hopp.load()</code> with the absolute path to plugin directory in your
+hoppfile.</p>
+<p>Here&apos;s an example that would be appropriate if you had a plugin called
+<code>sample</code> stored in <code>plugins/sample</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hopp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;hopp&apos;</span>)
+
+hopp.load(<span class="hljs-string">`<span class="hljs-subst">${__dirname}</span>/plugins/sample`</span>)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>
+  hopp([ <span class="hljs-string">&apos;src/**/*.js&apos;</span> ])
+    .sample()
+    .dest(<span class="hljs-string">&apos;dist&apos;</span>)
+</code></pre>
 
                                 
                                 </section>
@@ -423,7 +444,7 @@ as parameters to the function call. For instance:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Using Plugins","level":"1.2.2","depth":2,"next":{"title":"More on tasks","level":"1.2.3","depth":2,"path":"contents/overview/specials.md","ref":"contents/overview/specials.md","articles":[]},"previous":{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/using-plugins.md","mtime":"2017-06-28T20:25:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-28T22:50:40.164Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Using Plugins","level":"1.2.2","depth":2,"next":{"title":"More on tasks","level":"1.2.3","depth":2,"path":"contents/overview/specials.md","ref":"contents/overview/specials.md","articles":[]},"previous":{"title":"Getting Started","level":"1.2.1","depth":2,"path":"contents/overview/getting-started.md","ref":"contents/overview/getting-started.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contents/overview/using-plugins.md","mtime":"2017-07-05T01:06:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-05T01:06:37.262Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
